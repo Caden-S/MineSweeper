@@ -4,26 +4,26 @@ import java.awt.event.ActionListener;
 
 public class MenuBar extends JMenuBar implements ActionListener {
     private MineSweeper game;
-    private JButton newgame;
-    private JMenu help;
-    private JMenuItem howtoplay;
+    private JMenu help, preferences;
+    private JMenuItem howtoplay, newgame, savegame;
 
     public MenuBar(MineSweeper game) {
-        JMenuBar menu = new JMenuBar();
-
-        newgame = new JButton("New Game");
-        newgame.addActionListener(this);
 
         help = new JMenu("Help");
-        help.addActionListener(this);
-        howtoplay = new JMenuItem("How to Play");
-        howtoplay.addActionListener(this);
+        this.add(help);
 
+        howtoplay = new JMenuItem("How to Play");
         help.add(howtoplay);
 
-        menu.add(help);
+        preferences = new JMenu("Preferences");
+        this.add(preferences);
 
-        this.add(menu);
+        newgame = new JMenuItem("New Game");
+        preferences.add(newgame);
+
+        savegame = new JMenuItem("Save Game");
+        preferences.add(savegame);
+
 
     }
 

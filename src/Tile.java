@@ -8,7 +8,25 @@ public class Tile extends JPanel {
         super();
         this.add(num, JPanel.CENTER_ALIGNMENT);
 
-        num.setText((int)(Math.random() * 6) + "");
+        num.setText((int)(Math.random() * 8) + "");
+
+        switch(num.getText()) {
+            case "0":
+                num.setText("0");
+                break;
+            case "1":
+                num.setText("0");
+                break;
+            case "2":
+                num.setText("0");
+                break;
+            case "3":
+                num.setText("0");
+                break;
+            case "4":
+                num.setText("0");
+                break;
+        }
 
         this.setBounds(x * 25, y * 25, 25, 25);
         this.setBackground(Color.gray);

@@ -29,6 +29,7 @@ public class MineSweeper extends JFrame {
         for(Tile t : tilelist) {
             board.add(t);
         }
+        repaint();
     }
 
     public static void main(String args[]) {
@@ -50,7 +51,7 @@ public class MineSweeper extends JFrame {
         }
 
         MineSweeper window = new MineSweeper();
-        window.setBounds(480, 270, 606, 348);
+        window.setBounds(540, 360, 1150, 600);
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
         window.setVisible(true);
         window.setResizable(false);

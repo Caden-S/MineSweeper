@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class MineSweeper extends JFrame {
@@ -10,7 +11,7 @@ public class MineSweeper extends JFrame {
         super("MineSweeper");
 
         board = new JPanel();
-
+        board.setBackground(Color.darkGray);
         this.add(board);
 
         menubar = new MenuBar(this);

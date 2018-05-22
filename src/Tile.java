@@ -28,6 +28,10 @@ public class Tile extends JPanel {
                 break;
         }
 
+        if(num.getText() == "0") {
+
+        }
+
         this.setBounds(x * 25, y * 25, 25, 25);
         this.setBackground(Color.gray);
     }

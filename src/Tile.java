@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Tile extends JPanel {
-    private JLabel num = new JLabel();
+    public JLabel num = new JLabel();
 
     public Tile(int x, int y) {
         super();
@@ -11,9 +11,6 @@ public class Tile extends JPanel {
         num.setText((int)(Math.random() * 8) + "");
 
         switch(num.getText()) {
-            case "0":
-                num.setText("0");
-                break;
             case "1":
                 num.setText("0");
                 break;
@@ -21,9 +18,6 @@ public class Tile extends JPanel {
                 num.setText("0");
                 break;
             case "3":
-                num.setText("0");
-                break;
-            case "4":
                 num.setText("0");
                 break;
         }

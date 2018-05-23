@@ -6,6 +6,7 @@ public class MineSweeper extends JFrame {
     private MenuBar menubar;
     private Ctrl ctrl;
     private JPanel board;
+    private ArrayList<Tile> tilelist;
 
     public MineSweeper() {
         super("MineSweeper");
@@ -21,7 +22,8 @@ public class MineSweeper extends JFrame {
     }
 
     public void newGame() {
-        ArrayList<Tile> tilelist = new ArrayList<>();
+        tilelist = new ArrayList<>();
+        System.out.println("called");
         for(int r = 0; r <= 9; r++) {
             for (int c = 0; c <= 27; c++) {
                 tilelist.add(new Tile(r, c));
@@ -32,6 +34,26 @@ public class MineSweeper extends JFrame {
         }
         repaint();
     }
+
+    // Board reset method
+    public void reset() {
+        for(Tile t : tilelist) {
+            t.num.setText((int) (Math.random() * 8) + "");
+
+            switch(t.num.getText()) {
+                case "1":
+                    t.num.setText("0");
+                    break;
+                case "2":
+                    t.num.setText("0");
+                    break;
+                case "3":
+                    t.num.setText("0");
+                    break;
+            }
+        }
+    }
+
 
     public static void main(String args[]) {
         try {

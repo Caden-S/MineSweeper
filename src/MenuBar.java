@@ -39,7 +39,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
         }
         if(src == newgame) {
-            game.newGame();
+            game.reset();
+
         }
     }
 }

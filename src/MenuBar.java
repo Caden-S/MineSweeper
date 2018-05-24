@@ -5,8 +5,7 @@ import java.awt.event.ActionListener;
 public class MenuBar extends JMenuBar implements ActionListener {
     private MineSweeper game;
     private JMenu help, preferences;
-    private JMenuItem howtoplay, newgame, savegame;
-    private JPanel board;
+    private JMenuItem howtoplay, newgame;
 
     public MenuBar(MineSweeper game) {
         this.game = game;
@@ -26,11 +25,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
         newgame = new JMenuItem("New Game");
         newgame.addActionListener(this);
         preferences.add(newgame);
-
-        savegame = new JMenuItem("Save Game");
-        savegame.addActionListener(this);
-        preferences.add(savegame);
-
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -40,7 +34,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
         }
         if(src == newgame) {
             game.reset();
-
         }
     }
 }

@@ -27,7 +27,6 @@ public class MineSweeper extends JFrame {
 
     // New Game method
     public void newGame() {
-
         tilelist = new Tile[9][27];
 
         for(int r = 0; r <= 8; r++) {
@@ -78,7 +77,7 @@ public class MineSweeper extends JFrame {
 
     public void ActionListener(ActionEvent e ) {
         Object src = e.getSource();
-        if(src == tilelist) {
+        if(src == board) {
 
         }
     }

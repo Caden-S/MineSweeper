@@ -4,10 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Tile extends JButton {
+public class Tile extends JButton implements ActionListener{
     public JLabel num = new JLabel();
     public boolean lost;
-    private int r, c, type;
+    public int r, c, type;
     private MineSweeper game;
 
     // Tile Constructor
@@ -56,7 +56,7 @@ public class Tile extends JButton {
                 break;
         }
 
-        this.addActionListener(game::ActionListener);
+        this.addActionListener(this);
         this.setBounds(x * 25, y * 25, 25, 25);
         this.setBackground(Color.gray);
     }
@@ -66,6 +66,8 @@ public class Tile extends JButton {
         return this.r;
     }
 
+    public int getType() { return this.type; }
+
     // Returns tile column
     public int getColumn() {
         return this.c;
@@ -74,9 +76,20 @@ public class Tile extends JButton {
     public void ActionPerformed(ActionEvent e) {
         Object src = e.getSource();
         if(src == this) {
-            if(this.num.getText() == "1") {
-                lost = true;
+            if(this.getType() == 1) {
+                game.lose();
             }
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        Object src = actionEvent.getSource();
+        if(src==this) {
+            if(this.getType() == 1){
+                game.lose();
+            }
+
         }
     }
 }

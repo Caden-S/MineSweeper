@@ -30,7 +30,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JMenuItem src = (JMenuItem)e.getSource();
         if(src == howtoplay) {
-
+            HowTo h = new HowTo();
+            h.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            h.setVisible(true);
+            h.setBounds(540, 360, 1180, 680);
+            h.setResizable(false);
         }
         if(src == newgame) {
             game.reset();

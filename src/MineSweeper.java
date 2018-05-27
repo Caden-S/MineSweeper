@@ -1,19 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 public class MineSweeper extends JFrame {
     private MenuBar menubar;
     private JPanel board;
     private Tile[][] tilelist;
-    public JLabel end;
 
     // Game Constructor
     public MineSweeper() {
         super("MineSweeper");
-
-        end = new JLabel("You lose!");
 
         board = new JPanel();
         board.setBackground(Color.darkGray);
@@ -37,6 +33,20 @@ public class MineSweeper extends JFrame {
         for(Tile[] t : tilelist) {
             for(Tile x : t) {
                 board.add(x);
+
+                if(x.getType() == 0) {
+                    if(tilelist[x.getColumn() - 1][x.getRow() - 1].getType() == 1 ||
+                            tilelist[x.getColumn()][x.getRow() - 1].getType() == 1 ||
+                            tilelist[x.getColumn() + 1][x.getRow() - 1].getType() == 1 ||
+                            tilelist[x.getColumn() - 1][x.getRow()].getType() == 1 ||
+                            tilelist[x.getColumn() + 1][x.getRow()].getType() == 1 ||
+                            tilelist[x.getColumn() - 1][x.getRow() + 1].getType() == 1 ||
+                            tilelist[x.getColumn()][x.getRow() + 1].getType() == 1 ||
+                            tilelist[x.getColumn() + 1][x.getRow() + 1].getType() == 1) {
+                        if(tilelist[x.get])
+                        x.setText("1");
+                    }
+                }
             }
         }
         repaint();
@@ -46,42 +56,78 @@ public class MineSweeper extends JFrame {
     public void reset() {
         for(Tile[] x : tilelist) {
             for(Tile t : x) {
+                t.setEnabled(true);
                 t.setText((int) (Math.random() * 8) + "");
 
-                switch (t.getText()) {
+                switch(t.getText()) {
+                    case "0":
+                        t.setText("   ");
+                        t.type = 0;
+                        break;
                     case "1":
-                        t.setText("0");
+                        t.setText("   ");
+                        t.type = 0;
                         break;
                     case "2":
-                        t.setText("0");
+                        t.setText("   ");
+                        t.type = 0;
                         break;
                     case "3":
-                        t.setText("0");
+                        t.setText("   ");
+                        t.type = 0;
                         break;
                     case "4":
-                        t.setText("0");
+                        t.setText("   ");
+                        t.type = 0;
                         break;
                     case "5":
-                        t.setText("1");
+                        t.setText("   ");
+                        t.type = 1;
                         break;
                     case "6":
-                        t.setText("1");
+                        t.setText("   ");
+                        t.type = 1;
                         break;
                     case "7":
-                        t.setText("1");
+                        t.setText("   ");
+                        t.type = 1;
                         break;
+                }
+
+                if(t.getType() == 0) {
+                    if(tilelist[t.getColumn() - 1][t.getRow() - 1].getType() == 1 ||
+                            tilelist[t.getColumn()][t.getRow() - 1].getType() == 1 ||
+                            tilelist[t.getColumn() + 1][t.getRow() - 1].getType() == 1 ||
+                            tilelist[t.getColumn() - 1][t.getRow()].getType() == 1 ||
+                            tilelist[t.getColumn() + 1][t.getRow()].getType() == 1 ||
+                            tilelist[t.getColumn() - 1][t.getRow() + 1].getType() == 1 ||
+                            tilelist[t.getColumn()][t.getRow() + 1].getType() == 1 ||
+                            tilelist[t.getColumn() + 1][t.getRow() + 1].getType() == 1) {
+                        t.setText("1");
+                    }
                 }
             }
         }
     }
 
-    public void ActionListener(ActionEvent e ) {
-        Object src = e.getSource();
-        if(src == board) {
+    public void lose() {
+        System.out.println("You lost");
 
+        for(Tile[] x : tilelist) {
+            for(Tile t : x) {
+                if (t.type == 1) { t.setText("X"); }
+                else { t.setText("O"); }
+
+                t.setEnabled(false);
+            }
         }
-    }
 
+        LoseScreen w = new LoseScreen();
+        w.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        w.setBounds(1000,700,300,200);
+        w.setVisible(true);
+        w.setResizable(false);
+    }
 
     public static void main(String args[]) {
         try {

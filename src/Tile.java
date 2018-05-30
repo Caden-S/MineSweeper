@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class Tile extends JButton implements ActionListener{
     public JLabel num = new JLabel();
-    public boolean lost;
+    public Tile[][] tilelist;
     public int r, c, type;
     private MineSweeper game;
 
@@ -18,6 +18,7 @@ public class Tile extends JButton implements ActionListener{
         game = g;
         r = x;
         c = y;
+        tilelist = new Tile[9][27];
 
         num.setText((int)(Math.random() * 8) + "");
 
@@ -59,6 +60,7 @@ public class Tile extends JButton implements ActionListener{
         this.addActionListener(this);
         this.setBounds(x * 25, y * 25, 25, 25);
         this.setBackground(Color.gray);
+
     }
 
     // Returns tile row
@@ -73,15 +75,6 @@ public class Tile extends JButton implements ActionListener{
         return this.c;
     }
 
-    public void ActionPerformed(ActionEvent e) {
-        Object src = e.getSource();
-        if(src == this) {
-            if(this.getType() == 1) {
-                game.lose();
-            }
-        }
-    }
-
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         Object src = actionEvent.getSource();
@@ -89,7 +82,6 @@ public class Tile extends JButton implements ActionListener{
             if(this.getType() == 1){
                 game.lose();
             }
-
         }
     }
 }

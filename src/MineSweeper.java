@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
 
 public class MineSweeper extends JFrame {
     private MenuBar menubar;
@@ -13,6 +12,7 @@ public class MineSweeper extends JFrame {
 
         board = new JPanel();
         board.setBackground(Color.darkGray);
+        board.setLayout(new GridLayout(9, 27));
         this.add(board);
 
         menubar = new MenuBar(this);
@@ -33,20 +33,6 @@ public class MineSweeper extends JFrame {
         for(Tile[] t : tilelist) {
             for(Tile x : t) {
                 board.add(x);
-
-                if(x.getType() == 0) {
-                    if(tilelist[x.getColumn() - 1][x.getRow() - 1].getType() == 1 ||
-                            tilelist[x.getColumn()][x.getRow() - 1].getType() == 1 ||
-                            tilelist[x.getColumn() + 1][x.getRow() - 1].getType() == 1 ||
-                            tilelist[x.getColumn() - 1][x.getRow()].getType() == 1 ||
-                            tilelist[x.getColumn() + 1][x.getRow()].getType() == 1 ||
-                            tilelist[x.getColumn() - 1][x.getRow() + 1].getType() == 1 ||
-                            tilelist[x.getColumn()][x.getRow() + 1].getType() == 1 ||
-                            tilelist[x.getColumn() + 1][x.getRow() + 1].getType() == 1) {
-                        if(tilelist[x.get])
-                        x.setText("1");
-                    }
-                }
             }
         }
         repaint();
@@ -92,19 +78,6 @@ public class MineSweeper extends JFrame {
                         t.setText("   ");
                         t.type = 1;
                         break;
-                }
-
-                if(t.getType() == 0) {
-                    if(tilelist[t.getColumn() - 1][t.getRow() - 1].getType() == 1 ||
-                            tilelist[t.getColumn()][t.getRow() - 1].getType() == 1 ||
-                            tilelist[t.getColumn() + 1][t.getRow() - 1].getType() == 1 ||
-                            tilelist[t.getColumn() - 1][t.getRow()].getType() == 1 ||
-                            tilelist[t.getColumn() + 1][t.getRow()].getType() == 1 ||
-                            tilelist[t.getColumn() - 1][t.getRow() + 1].getType() == 1 ||
-                            tilelist[t.getColumn()][t.getRow() + 1].getType() == 1 ||
-                            tilelist[t.getColumn() + 1][t.getRow() + 1].getType() == 1) {
-                        t.setText("1");
-                    }
                 }
             }
         }

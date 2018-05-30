@@ -9,7 +9,6 @@ public class LoseScreen extends JFrame {
 
         text = new JPanel();
         loss = new JLabel("You lost!");
-
         text.add(loss);
 
         this.add(text);

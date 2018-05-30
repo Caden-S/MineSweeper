@@ -4,7 +4,7 @@ import java.awt.*;
 public class MineSweeper extends JFrame {
     private MenuBar menubar;
     private JPanel board;
-    private Tile[][] tilelist;
+    public Tile[][] tilelist;
 
     // Game Constructor
     public MineSweeper() {
@@ -33,6 +33,7 @@ public class MineSweeper extends JFrame {
         for(Tile[] t : tilelist) {
             for(Tile x : t) {
                 board.add(x);
+                x.numMines();
             }
         }
         repaint();
@@ -79,6 +80,11 @@ public class MineSweeper extends JFrame {
                         t.type = 1;
                         break;
                 }
+            }
+        }
+        for(Tile[] t : tilelist) {
+            for(Tile x : t) {
+                x.numMines();
             }
         }
     }

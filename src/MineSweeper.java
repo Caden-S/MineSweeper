@@ -96,7 +96,15 @@ public class MineSweeper extends JFrame {
         for(Tile[] x : tilelist) {
             for(Tile t : x) {
                 if (t.type == 1) { t.setText("X"); }
-                else { t.setText("O"); }
+                else {
+                    if(t.count == 0) {
+                        t.setText("");
+                    }
+                    else {
+                        t.setText(t.count + "");
+                    }
+                    t.setBackground(Color.WHITE);
+                }
 
                 t.setEnabled(false);
             }
@@ -104,7 +112,7 @@ public class MineSweeper extends JFrame {
 
         LoseScreen w = new LoseScreen();
         w.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        w.setBounds(1000,700,300,125);
+        w.setBounds(1000,700,300,200);
         w.setVisible(true);
         w.setResizable(false);
     }
@@ -122,7 +130,7 @@ public class MineSweeper extends JFrame {
 
         WinScreen w = new WinScreen();
         w.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        w.setBounds(1000,700,300,125);
+        w.setBounds(1000,700,300,200);
         w.setVisible(true);
         w.setResizable(false);
     }
@@ -138,6 +146,6 @@ public class MineSweeper extends JFrame {
         window.setBounds(540, 360, 1180, 680);
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
         window.setVisible(true);
-        window.setResizable(false);
+        window.setResizable(true);
     }
 }

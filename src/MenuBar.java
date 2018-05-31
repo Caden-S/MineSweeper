@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,22 +9,35 @@ public class MenuBar extends JMenuBar implements ActionListener {
     private JMenuItem howtoplay, newgame;
 
     public MenuBar(MineSweeper game) {
+
+        Dimension x = new Dimension(20, 50);
+        Dimension y = new Dimension(100, 50);
+        Dimension z = new Dimension(50, 50);
+
+        Font f = new Font("serif", Font.PLAIN, 17);
+        UIManager.put("Menu.font", f);
+
         this.game = game;
+        this.setPreferredSize(x);
 
         help = new JMenu("Help");
         help.addActionListener(this);
+        help.setPreferredSize(z);
         this.add(help);
 
         howtoplay = new JMenuItem("How to Play");
         howtoplay.addActionListener(this);
+        howtoplay.setPreferredSize(y);
         help.add(howtoplay);
 
-        preferences = new JMenu("Preferences");
+        preferences = new JMenu("New Game");
         preferences.addActionListener(this);
+        preferences.setPreferredSize(y);
         this.add(preferences);
 
         newgame = new JMenuItem("New Game");
         newgame.addActionListener(this);
+        newgame.setPreferredSize(y);
         preferences.add(newgame);
     }
 

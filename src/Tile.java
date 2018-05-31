@@ -58,6 +58,8 @@ public class Tile extends JButton implements ActionListener{
                 break;
         }
 
+        this.setFont(new Font("Serif", Font.BOLD, 20));
+
         this.addActionListener(this);
         this.setBounds(x * 25, y * 25, 25, 25);
         this.setBackground(Color.lightGray);
@@ -76,6 +78,9 @@ public class Tile extends JButton implements ActionListener{
     boolean bomb = false;
     public void x() {
         bomb = !bomb;
+        if(this.count > 0) {
+            return;
+        }
         if(bomb) {
             this.setText("X");
             this.setEnabled(false);
@@ -288,6 +293,7 @@ public class Tile extends JButton implements ActionListener{
 
         if (this.count != 0) {
             this.setText(count + "");
+            this.setBackground(Color.WHITE);
             return;
         }
 
@@ -298,7 +304,6 @@ public class Tile extends JButton implements ActionListener{
         this.setText(this.count + "");
 
         if(this.count == 0) {
-            this.setText(this.count + "");
 
             if(this.getColumn() < 26) {
                 game.tilelist[this.getRow()][this.getColumn() + 1].showTile();
@@ -333,8 +338,10 @@ public class Tile extends JButton implements ActionListener{
             }
         }
         if(this.count == 0) {
+            this.setText("");
             this.setBackground(Color.white);
         }
+
     }
 
     @Override

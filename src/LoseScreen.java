@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class LoseScreen extends JFrame {
     private JPanel text;
@@ -10,6 +11,7 @@ public class LoseScreen extends JFrame {
         text = new JPanel();
         loss = new JLabel("You lost!");
         text.add(loss);
+        loss.setFont(new Font("Serif", Font.BOLD, 50));
 
         this.add(text);
     }

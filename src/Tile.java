@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class Tile extends JButton implements ActionListener{
@@ -58,8 +60,30 @@ public class Tile extends JButton implements ActionListener{
 
         this.addActionListener(this);
         this.setBounds(x * 25, y * 25, 25, 25);
-        this.setBackground(Color.gray);
+        this.setBackground(Color.lightGray);
 
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getButton() == 3) { // if right click
+                    x();
+                }
+            }
+        });
+
+    }
+
+
+    boolean bomb = false;
+    public void x() {
+        bomb = !bomb;
+        if(bomb) {
+            this.setText("X");
+            this.setEnabled(false);
+        }
+        else {
+            this.setText("");
+            this.setEnabled(true);
+        }
     }
 
     // Returns tile row
@@ -262,24 +286,80 @@ public class Tile extends JButton implements ActionListener{
             return;
         }
 
-        this.setText(count + "");
-        if(count == 0) {
-            game.tilelist[this.getRow() + 1][this.getColumn()].showTile();
-            game.tilelist[this.getRow()][this.getColumn() + 1].showTile();
-
-//                game.tilelist[this.getRow()][this.getColumn() - 1].showTile();
+        if (this.count != 0) {
+            this.setText(count + "");
+            return;
         }
 
+        if(this.getText() != "") {
+            return;
+        }
+
+        this.setText(this.count + "");
+
+        if(this.count == 0) {
+            this.setText(this.count + "");
+
+            if(this.getColumn() < 26) {
+                game.tilelist[this.getRow()][this.getColumn() + 1].showTile();
+            }
+
+            if(this.getRow() <= 7) {
+                game.tilelist[this.getRow() + 1][this.getColumn()].showTile();
+            }
+
+            if(this.getRow() >= 1) {
+                game.tilelist[this.getRow() - 1][this.getColumn()].showTile();
+            }
+
+            if(this.getRow() >= 1 && this.getColumn() >= 1) {
+                game.tilelist[this.getRow() - 1][this.getColumn() - 1].showTile();
+            }
+
+            if(this.getRow() >= 1 && this.getColumn() < 26) {
+                game.tilelist[this.getRow() - 1][this.getColumn() + 1].showTile();
+            }
+
+            if(this.getRow() <= 7 && this.getColumn() >= 1) {
+                game.tilelist[this.getRow() + 1][this.getColumn() - 1].showTile();
+            }
+
+            if(this.getRow() <= 7 && this.getColumn() < 26) {
+                game.tilelist[this.getRow() + 1][this.getColumn() + 1].showTile();
+            }
+
+            if(this.getColumn() >= 1) {
+                game.tilelist[this.getRow()][this.getColumn() - 1].showTile();
+            }
+        }
+        if(this.count == 0) {
+            this.setBackground(Color.white);
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         Object src = actionEvent.getSource();
-        if(src==this) {
+        boolean win = true;
+        if(src == this) {
             if(this.getType() == 1){
                 game.lose();
+                return;
             }
             this.showTile();
+
+            for(Tile[] t : game.tilelist) {
+                for(Tile x : t) {
+                    if(x.getType() != 1) {
+                        if(x.getText() == "") {
+                            win = false;
+                        }
+                    }
+                }
+            }
+            if(win) {
+                game.win();
+            }
         }
     }
 }

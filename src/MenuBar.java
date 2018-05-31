@@ -33,7 +33,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
             HowTo h = new HowTo();
             h.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             h.setVisible(true);
-            h.setBounds(540, 360, 1180, 680);
+            h.setBounds(540, 360, 1000, 300);
             h.setResizable(false);
         }
         if(src == newgame) {

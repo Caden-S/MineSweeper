@@ -43,40 +43,41 @@ public class MineSweeper extends JFrame {
     public void reset() {
         for(Tile[] x : tilelist) {
             for(Tile t : x) {
+                t.setBackground(Color.lightGray);
                 t.setEnabled(true);
                 t.setText((int) (Math.random() * 8) + "");
 
                 switch(t.getText()) {
                     case "0":
-                        t.setText("   ");
+                        t.setText("");
                         t.type = 0;
                         break;
                     case "1":
-                        t.setText("   ");
+                        t.setText("");
                         t.type = 0;
                         break;
                     case "2":
-                        t.setText("   ");
+                        t.setText("");
                         t.type = 0;
                         break;
                     case "3":
-                        t.setText("   ");
+                        t.setText("");
                         t.type = 0;
                         break;
                     case "4":
-                        t.setText("   ");
+                        t.setText("");
                         t.type = 0;
                         break;
                     case "5":
-                        t.setText("   ");
+                        t.setText("");
                         t.type = 0;
                         break;
                     case "6":
-                        t.setText("   ");
+                        t.setText("");
                         t.type = 0;
                         break;
                     case "7":
-                        t.setText("   ");
+                        t.setText("");
                         t.type = 1;
                         break;
                 }
@@ -103,27 +104,34 @@ public class MineSweeper extends JFrame {
 
         LoseScreen w = new LoseScreen();
         w.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        w.setBounds(1000,700,300,200);
+        w.setBounds(1000,700,300,125);
+        w.setVisible(true);
+        w.setResizable(false);
+    }
+
+    public void win() {
+        System.out.println("You won");
+
+        for(Tile[] x : tilelist) {
+            for(Tile t : x) {
+                if (t.type == 1) { t.setText("X"); }
+
+                t.setEnabled(false);
+            }
+        }
+
+        WinScreen w = new WinScreen();
+        w.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        w.setBounds(1000,700,300,125);
         w.setVisible(true);
         w.setResizable(false);
     }
 
     public static void main(String args[]) {
         try {
-            // Set System L&F
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            System.out.println("LAF not supported.");
-        }
-        catch (ClassNotFoundException e) {
-            System.out.println("Class not found");
-        }
-        catch (InstantiationException e) {
-            System.out.println("LAF cannot be instantiated");
-        }
-        catch (IllegalAccessException e) {
-            System.out.println("Illegal access.");
+            UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         MineSweeper window = new MineSweeper();

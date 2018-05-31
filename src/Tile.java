@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 
 public class Tile extends JButton implements ActionListener{
-    public JLabel num = new JLabel();
+    private JLabel num = new JLabel();
     public int r, c, type;
     private MineSweeper game;
     public int count;
@@ -44,11 +44,11 @@ public class Tile extends JButton implements ActionListener{
                 break;
             case "5":
                 num.setText("   ");
-                this.type = 1;
+                this.type = 0;
                 break;
             case "6":
                 num.setText("   ");
-                this.type = 1;
+                this.type = 0;
                 break;
             case "7":
                 num.setText("   ");
@@ -83,9 +83,13 @@ public class Tile extends JButton implements ActionListener{
                 if (this.getColumn() == 0) {
                     if (game.tilelist[this.getRow() - 1][this.getColumn()].getType() == 1) {
                         count++;
-                    } else if (game.tilelist[this.getRow() - 1][this.getColumn() + 1].getType() == 1) {
+                    }
+
+                    if (game.tilelist[this.getRow() - 1][this.getColumn() + 1].getType() == 1) {
                         count++;
-                    } else if (game.tilelist[this.getRow()][this.getColumn() + 1].getType() == 1) {
+                    }
+
+                    if (game.tilelist[this.getRow()][this.getColumn() + 1].getType() == 1) {
                         count++;
                     }
                 }
@@ -94,9 +98,13 @@ public class Tile extends JButton implements ActionListener{
                 else if (this.getColumn() == 26) {
                     if (game.tilelist[this.getRow() - 1][this.getColumn()].getType() == 1) {
                         count++;
-                    } else if (game.tilelist[this.getRow() - 1][this.getColumn() - 1].getType() == 1) {
+                    }
+
+                    if (game.tilelist[this.getRow() - 1][this.getColumn() - 1].getType() == 1) {
                         count++;
-                    } else if (game.tilelist[this.getRow()][this.getColumn() - 1].getType() == 1) {
+                    }
+
+                    if (game.tilelist[this.getRow()][this.getColumn() - 1].getType() == 1) {
                         count++;
                     }
                 }
@@ -124,9 +132,13 @@ public class Tile extends JButton implements ActionListener{
                 if (this.getColumn() == 0) {
                     if (game.tilelist[this.getRow() + 1][this.getColumn()].getType() == 1) {
                         count++;
-                    } else if (game.tilelist[this.getRow() + 1][this.getColumn() + 1].getType() == 1) {
+                    }
+
+                    if (game.tilelist[this.getRow() + 1][this.getColumn() + 1].getType() == 1) {
                         count++;
-                    } else if (game.tilelist[this.getRow()][this.getColumn() + 1].getType() == 1) {
+                    }
+
+                    if (game.tilelist[this.getRow()][this.getColumn() + 1].getType() == 1) {
                         count++;
                     }
                 }
@@ -136,10 +148,12 @@ public class Tile extends JButton implements ActionListener{
                     if (game.tilelist[this.getRow()][this.getColumn() - 1].getType() == 1) {
                         count++;
                     }
-                    else if (game.tilelist[this.getRow() + 1][this.getColumn() - 1].getType() == 1) {
+
+                    if (game.tilelist[this.getRow() + 1][this.getColumn() - 1].getType() == 1) {
                         count++;
                     }
-                    else if (game.tilelist[this.getRow() + 1][this.getColumn()].getType() == 1) {
+
+                    if (game.tilelist[this.getRow() + 1][this.getColumn()].getType() == 1) {
                         count++;
                     }
                 }
@@ -169,16 +183,16 @@ public class Tile extends JButton implements ActionListener{
                 if (game.tilelist[this.getRow() - 1][this.getColumn()].getType() == 1) {
                     count++;
                 }
-                else if (game.tilelist[this.getRow() - 1][this.getColumn() + 1].getType() == 1) {
+                if (game.tilelist[this.getRow() - 1][this.getColumn() + 1].getType() == 1) {
                     count++;
                 }
-                else if (game.tilelist[this.getRow()][this.getColumn() + 1].getType() == 1) {
+                if (game.tilelist[this.getRow()][this.getColumn() + 1].getType() == 1) {
                     count++;
                 }
-                else if (game.tilelist[this.getRow() + 1][this.getColumn() + 1].getType() == 1) {
+                if (game.tilelist[this.getRow() + 1][this.getColumn() + 1].getType() == 1) {
                     count++;
                 }
-                else if (game.tilelist[this.getRow() + 1][this.getColumn()].getType() == 1) {
+                if (game.tilelist[this.getRow() + 1][this.getColumn()].getType() == 1) {
                     count++;
                 }
             }
@@ -188,16 +202,20 @@ public class Tile extends JButton implements ActionListener{
                 if (game.tilelist[this.getRow() - 1][this.getColumn()].getType() == 1) {
                     count++;
                 }
-                else if (game.tilelist[this.getRow() - 1][this.getColumn() - 1].getType() == 1) {
+
+                if(game.tilelist[this.getRow() - 1][this.getColumn() - 1].getType() == 1) {
                     count++;
                 }
-                else if (game.tilelist[this.getRow()][this.getColumn() - 1].getType() == 1) {
+
+                if (game.tilelist[this.getRow()][this.getColumn() - 1].getType() == 1) {
                     count++;
                 }
-                else if (game.tilelist[this.getRow() + 1][this.getColumn() - 1].getType() == 1) {
+
+                if (game.tilelist[this.getRow() + 1][this.getColumn() - 1].getType() == 1) {
                     count++;
                 }
-                else if (game.tilelist[this.getRow() + 1][this.getColumn()].getType() == 1) {
+
+                if (game.tilelist[this.getRow() + 1][this.getColumn()].getType() == 1) {
                     count++;
                 }
             }
@@ -208,36 +226,50 @@ public class Tile extends JButton implements ActionListener{
                     count++;
                 }
                 //top middle
-                else if (game.tilelist[this.getRow() - 1][this.getColumn()].getType() == 1) {
+                if (game.tilelist[this.getRow() - 1][this.getColumn()].getType() == 1) {
                     count++;
                 }
                 //top right
-                else if (game.tilelist[this.getRow() - 1][this.getColumn() + 1].getType() == 1) {
+                if (game.tilelist[this.getRow() - 1][this.getColumn() + 1].getType() == 1) {
                     count++;
                 }
                 //middle left
-                else if (game.tilelist[this.getRow()][this.getColumn() - 1].getType() == 1) {
+                if (game.tilelist[this.getRow()][this.getColumn() - 1].getType() == 1) {
                     count++;
                 }
                 //middle right
-                else if (game.tilelist[this.getRow()][this.getColumn() + 1].getType() == 1) {
+                if (game.tilelist[this.getRow()][this.getColumn() + 1].getType() == 1) {
                     count++;
                 }
                 //bottom left
-                else if (game.tilelist[this.getRow() + 1][this.getColumn() - 1].getType() == 1) {
+                if (game.tilelist[this.getRow() + 1][this.getColumn() - 1].getType() == 1) {
                     count++;
                 }
                 //bottom middle
-                else if (game.tilelist[this.getRow() + 1][this.getColumn()].getType() == 1) {
+                if (game.tilelist[this.getRow() + 1][this.getColumn()].getType() == 1) {
                     count++;
                 }
                 //bottom right
-                else if (game.tilelist[this.getRow() + 1][this.getColumn() + 1].getType() == 1) {
+                if (game.tilelist[this.getRow() + 1][this.getColumn() + 1].getType() == 1) {
                     count++;
                 }
             }
-            this.setText(count + "");
         }
+    }
+
+    public void showTile() {
+        if(this.getType() == 1) {
+            return;
+        }
+
+        this.setText(count + "");
+        if(count == 0) {
+            game.tilelist[this.getRow() + 1][this.getColumn()].showTile();
+            game.tilelist[this.getRow()][this.getColumn() + 1].showTile();
+
+//                game.tilelist[this.getRow()][this.getColumn() - 1].showTile();
+        }
+
     }
 
     @Override
@@ -247,6 +279,7 @@ public class Tile extends JButton implements ActionListener{
             if(this.getType() == 1){
                 game.lose();
             }
+            this.showTile();
         }
     }
 }

@@ -69,11 +69,11 @@ public class MineSweeper extends JFrame {
                         break;
                     case "5":
                         t.setText("   ");
-                        t.type = 1;
+                        t.type = 0;
                         break;
                     case "6":
                         t.setText("   ");
-                        t.type = 1;
+                        t.type = 0;
                         break;
                     case "7":
                         t.setText("   ");
